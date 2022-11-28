@@ -1,0 +1,70 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+body{
+    height: 100vh;
+}
+
+header{
+    height: 30vh;
+
+    display: flex;
+    background-color:cadetblue ;
+
+}
+header #logo{
+    background-color: aqua;
+
+    display: flex;
+    flex: 70%;
+    justify-content:left;
+    align-items: flex-end;
+}
+header #logo img{
+    
+    width: 160px;
+    left: 160px;
+
+    display: flex;
+}
+
+header #contato{
+    background-color: blanchedalmond;
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+header #contato img{
+    width: 15px;
+    left: 15px;
+}
+section{
+    height: 5vh;
+    background-color: azure;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 9px;
+    font-family: sans-serif;
+}
+article{
+    height: 65vh;
+    background-color: aquamarine;
+
+    display: flex;
+
+}
+article nav{
+    flex: 1;
+
+    display: flex;
+    background-color: bisque;
+}
+
+article aside{
+    flex:1;
+
+    display: flex;
+    background-color: blueviolet;
+}
