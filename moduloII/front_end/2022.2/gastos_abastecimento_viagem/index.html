@@ -8,21 +8,21 @@
     <link rel="stylesheet" href="css/interface.css">
     <script src="js/raciocinio.js"></script>
 </head>
-<body>
+<body id ="dados">
     <p>
         Informe os valores para obter os seguintes resultados
     </p>
     <section>
-        <label for="valor_do_alcool">Litro do álcool</label>
-        <input type="text" name="valor" id="alcool"><br>
-        <label for="valor_da_gasolina">Litro da gasolina</label>
-        <input type="text" name="valor" id="gasolina"><br>
-        <label for="km_por_litro">Quantos Km faz com 1L de gasolina</label>
-        <input type="text" name="km_por_litro" id="km_por_litro"><br>
-        <label for="dinheiro">Dinheiro disponível para uso</label>
-        <input type="text" name="dinheiro_disponivel" id="dinheiro"><br>
-        <label for="destino_km_totais">Quantos Km pretende percorrer</label>
-        <input type="text" name="destino" id="km_totais">
+        <input type="text" placeholder="R$ L álcool" id="alcool">
+        <input type="text" placeholder="R$ L gasolina" id="gasolina">
+        <input type="text" placeholder="Km por litro" id="km_por_litro">
+        <input type="text" placeholder="dinheiro disponivel" id="dinheiro">
+        <input type="text" placeholder="Km pretende percorrer" id="km_totais">
     </section>
+    <footer>
+        <button type="reset" id="limpar">limpar</button>
+        <button type="submit" id="enviar">enviar</button>
+    </footer>
+
 </body>
 </html>
