@@ -1,34 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/interface.css" />
-    <script src="js/raciocinio.js" defer></script>
-    <title>GASTOS NA VIAGEM</title>
+    <title>Gastos da Viagem</title>
+    <link rel="stylesheet" href="css/interface.css">
+    <script src="js/raciocinio.js"></script>
 </head>
 <body>
-    <header>
-        <h3>GASTOS DE UMA VIAGEM</h3>
-        <p>Valor do álcool <input type="text"/></p>
-        <p>Valor da gasolina <input type="text"/></p>
-        <p>Quantos KM o veículo faz com 1L de Gasolina <input type="text"/></p>
-        <p>R$ disponível para abstecer <input type="text"/></p>
-        <p>Quantos KM pretende percorrer <input type="text"/></p>
-    </header>
+    <p>
+        Informe os valores para obter os seguintes resultados
+    </p>
     <section>
-        <button type="reset" id="btn_esquerdo">limpar</button>
-        <button type="submit" id="btn_direito">enviar</button>
+        <label for="valor_do_alcool">Litro do álcool</label>
+        <input type="text" name="valor" id="alcool"><br>
+        <label for="valor_da_gasolina">Litro da gasolina</label>
+        <input type="text" name="valor" id="gasolina"><br>
+        <label for="km_por_litro">Quantos Km faz com 1L de gasolina</label>
+        <input type="text" name="km_por_litro" id="km_por_litro"><br>
+        <label for="dinheiro">Dinheiro disponível para uso</label>
+        <input type="text" name="dinheiro_disponivel" id="dinheiro"><br>
+        <label for="destino_km_totais">Quantos Km pretende percorrer</label>
+        <input type="text" name="destino" id="km_totais">
     </section>
-    <details>
-        <footer id="gasolina">
-
-        </footer>
-        <footer id="alcool">
-
-        </footer>
-    </details>
-
 </body>
 </html>
