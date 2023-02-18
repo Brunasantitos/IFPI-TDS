@@ -7,8 +7,13 @@ def numero_par(entradaDados):
         print(f'False, o número {entradaDados} é ímpar.') 
 
 def main():
-    entradaDados = int(input())
-    numero_par(entradaDados)
+    while True:
+        try:
 
+            entradaDados = int(input())
+            numero_par(entradaDados)
+            break
+        except:
+            print(f'\nTente novamente!')
 if __name__=='__main__':
     main()

@@ -6,7 +6,7 @@ def fatorial(valor):
 
         x = i * x
 
-    print(f'\nO fatorial de {valor} é {x}')
+    print(f'\{x} {i}')
 
 
 def main():
