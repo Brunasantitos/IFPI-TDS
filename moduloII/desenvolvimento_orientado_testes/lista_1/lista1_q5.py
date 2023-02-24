@@ -1,3 +1,9 @@
+def entrada_altura(h):
+    pass
+
+def entrada_sexo(s):
+    pass
+
 def peso_ideal(h,s):
     if s == 1:
         peso = ((62.1*h) - 44.7)
@@ -25,3 +31,6 @@ def main():
 
 if __name__=='__main__':
     main()
+
+gov
+catce.2022111mtds0088@aluno.ifpi.edu.br
