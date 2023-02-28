@@ -1,36 +1,34 @@
-def entrada_altura(h):
-    pass
+def entrada_altura(altura):
+   while True:
+        try:
+            altura
+            break
+       
+        except:
+            print("Informe valores válidos")
 
-def entrada_sexo(s):
-    pass
+def entrada_sexo(sexo, h):
+    while True:
+        try:
+            if sexo == 1:
+                peso = ((62.1*h) - 44.7)
+                print(f'\nSeu peso idel é {peso:.2f}')
+            elif sexo == 2:
+                peso = ((72.7*h) - 58)
+                print(f'\nSeu peso ideal é {peso:.2f}')
+            break
+          
+        except:
+            print("Informe os valores válidos")
 
-def peso_ideal(h,s):
-    if s == 1:
-        peso = ((62.1*h) - 44.7)
-        print(f'\nSeu peso idel é {peso:.2f}')
-    elif s == 2:
-        peso = ((72.7*h) - 58)
-        print(f'\nSeu peso ideal é {peso:.2f}')
+        break
 
 def main():
-    while True:
-            try:
-                altura = float(input("Qual a sua altura: "))
-            except:
-                print("\nInforme uma altura válida!")
+    altura = float(input("Qual a sua altura: "))
+    sexo = int(input("\nInformeu seu sexo: [1]Feminno ou [2]Masculino: "))
 
-            try:
-                sexo = int(input("\nInformeu seu sexo: [1]Feminno ou [2]Masculino: "))
-
-                if sexo == 1 or sexo ==2:
-                    peso_ideal(altura,sexo)
-                    break
-            except:
-                print("\nInforme um valor válido para o seu sexo!")
-
+    entrada_altura(altura)
+    entrada_sexo(sexo, entrada_altura)
 
 if __name__=='__main__':
     main()
-
-gov
-catce.2022111mtds0088@aluno.ifpi.edu.br

@@ -11,12 +11,11 @@ def caracteresValidos(caractere):
 
         except:
                 
-                if (caractere.upper()) != 'S' or (caractere.upper()) != 'N':
-                    print('Caractere inválido! Digite novamente.')
-
-                elif caractere.upper() == 'N':
-                    break
-
+            if caractere.upper() != 'S' or caractere.upper() != 'N':
+                print('Caractere inválido! Digite novamente.')
+                
+            elif caractere.upper() == 'N':
+                break
 
 def main():
     caractere = input("Informe um número: ")

@@ -26,3 +26,12 @@ meu_gato.envelhecer()
 print(f'\nnome {meu_gato.nome}')
 print('engordar {}'.format (meu_gato.engordar))
 print('nenvelhecer {}'.format(meu_gato.envelhecer))
+
+
+git status
+
+git add .
+
+git commit - m "atividade de classe finalizada"
+
+git push -u origin main

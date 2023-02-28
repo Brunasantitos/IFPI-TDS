@@ -15,5 +15,6 @@ def main():
             break
         except:
             print(f'\nTente novamente!')
+            
 if __name__=='__main__':
     main()
