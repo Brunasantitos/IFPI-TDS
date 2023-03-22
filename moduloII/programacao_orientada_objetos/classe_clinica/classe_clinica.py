@@ -29,7 +29,7 @@ class ConsultaMedica:
     self.pago = True
 
   def cancelar_consulta(self):
-    self.cancelado = True
+    self.cancelado = False
 
 def main():
     consultas = []
@@ -57,23 +57,23 @@ def main():
               print("\nNão existem consultas a serem pagas")
               
         elif MenuAtendimento=='3':
-          cont=0
+          cont = 0
           for i,j in enumerate(consultas):
               #seq+=1
             if j.cancelado == False:
               cont+=1
               print(i,j)
+              
           if cont > 0:
             op1 = int(input("\nescolha um indice correspondente a consulta: "))
             consultas[op1].cancelado = True
             print("\nConsulta cancelada")
+            
           else:
             print("\nNão há consultas para serem canceladas")
             break
      
-    
+
 if __name__=='__main__':
     main()
-#consultas.append(ConsultaMedica('20/03/2023',"Maria","João"))
-#for i in consultas:
-#  print(i)
+
