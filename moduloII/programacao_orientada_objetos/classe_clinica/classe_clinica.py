@@ -3,12 +3,13 @@ from datetime import *
 class ConsultaMedica:
   dia_semana = {0:'segunda-feira',1:'terça-feira',2:'quarta-feira',3:'quinta-feira',4:'sexta-feira'}
 
-  def __init__(self,data_consulta,medico,paciente):
+  def __init__(self,data_consulta,medico,paciente, cpf_paciente):
     finalDeSemana = [5,6]
     self.data_consulta = data_consulta
     self.data_retorno = None
     self.medico = medico
     self.paciente = paciente
+    self.cpf_paciente = cpf_paciente
     self.pago = False
     self.cancelado = False
 
@@ -30,15 +31,13 @@ class ConsultaMedica:
 
   def cancelar_consulta(self):
     self.cancelado = False
-
-  def retorno_consulta(self):
-    if self.data_retorno > dataAtual and self.retorno > self.dataconsulta:
-      print("\nRetorno agendado") 
     
 
 def main():
     consultas = []
     cancelado = []
+    retorno = []
+    
     while True:
         print('\n1-Nova Consulta')
         print('2-Pagar Consulta')
@@ -48,8 +47,9 @@ def main():
         MenuAtendimento = input("opção:")
         
         if MenuAtendimento == '1':
-            consultas.append(ConsultaMedica(input("entre com a data da consulta:(dd/mm/aaaa): "),input("entre com o nome do médico: "),input("entre com o nome do paciente: ")))
-      
+            consultas.append(ConsultaMedica(input("entre com a data da consulta:(dd/mm/aaaa): "),
+                                            input("entre com o nome do médico: "),input("entre com o nome do paciente: "), input("cpf do paciente: ")))
+            print("\nConsulta agendada")
         elif MenuAtendimento == '2': 
             cont=0
             for i,j in enumerate(consultas):
@@ -82,9 +82,16 @@ def main():
 
         elif MenuAtendimento == '4':
           
-            consultas.append(ConsultaMedica(input("entre com a data do retorno:(dd/mm/aaaa): "),input("entre com o nome do médico: "),input("entre com o nome do paciente: ")))
-            print("\nAgendado o seu retorno")
-            break
+            retorno_paciente = input("Informe o cpf do paciente: ")
+
+            if retorno_paciente in consultas:
+              retorno.append(ConsultaMedica(input("entre com a data do retorno:(dd/mm/aaaa): "),input("entre com o nome do médico: "),
+                                          input("entre com o nome do paciente: "), input("cpf do paciente: ")))
+
+            else:
+              print("Não encontrado paciente")
+
+            
      
 
 if __name__=='__main__':
