@@ -31,6 +31,11 @@ class ConsultaMedica:
   def cancelar_consulta(self):
     self.cancelado = False
 
+  def retorno_consulta(self):
+    if self.data_retorno > dataAtual and self.retorno > self.dataconsulta:
+      print("\nRetorno agendado") 
+    
+
 def main():
     consultas = []
     cancelado = []
@@ -38,12 +43,14 @@ def main():
         print('\n1-Nova Consulta')
         print('2-Pagar Consulta')
         print('3-Cancelar Consulta')
+        print('4-Agendar retorno')
 
         MenuAtendimento = input("opção:")
-        if MenuAtendimento=='1':
+        
+        if MenuAtendimento == '1':
             consultas.append(ConsultaMedica(input("entre com a data da consulta:(dd/mm/aaaa): "),input("entre com o nome do médico: "),input("entre com o nome do paciente: ")))
       
-        elif MenuAtendimento=='2': 
+        elif MenuAtendimento == '2': 
             cont=0
             for i,j in enumerate(consultas):
               #seq+=1
@@ -56,10 +63,11 @@ def main():
             else:
               print("\nNão existem consultas a serem pagas")
               
-        elif MenuAtendimento=='3':
+        elif MenuAtendimento == '3':
           cont = 0
           for i,j in enumerate(consultas):
               #seq+=1
+            
             if j.cancelado == False:
               cont+=1
               print(i,j)
@@ -71,6 +79,11 @@ def main():
             
           else:
             print("\nNão há consultas para serem canceladas")
+
+        elif MenuAtendimento == '4':
+          
+            consultas.append(ConsultaMedica(input("entre com a data do retorno:(dd/mm/aaaa): "),input("entre com o nome do médico: "),input("entre com o nome do paciente: ")))
+            print("\nAgendado o seu retorno")
             break
      
 
