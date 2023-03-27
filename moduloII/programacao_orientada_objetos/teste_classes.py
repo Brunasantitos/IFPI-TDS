@@ -1,25 +1,26 @@
-def lerNumero():
+#coding: latin-1
+
+def somatorio_fracoes(n):
+    s = 0
+    for i in range(1, n + 1):
+        s += 1/i
+    return s
+
+#region MAIN
+def main():
     while True:
         try:
-            numero = int(input('Digite o número inteiro e positivo: '))
-            if (numero < 0):
-                print('O número deve ser positivo. Tente novamente.')
-                lerNumero()
-            return numero
+            numero = int(input('Digite um n�mero inteiro positivo: '))
+            while numero <= 0:
+                numero = int(input("N�mero inv�lido! Digite um n�mero inteiro positivo! "))
+            print(f'O somat�rio das fra��es at� 1/{numero} � igual a: {somatorio_fracoes(numero):.2f}')
+            break
         except:
-            print('Número inválido. Tente novamente.')
+            print('!! DADO INV�LIDO !! Digite um n�mero inteiro positivo!')
 
+    
 
-def somaTudoEntreDoisNumeros(n1, n2):
-    a1 = n1 if n1 < n2 else n2
-    an = n2 if n2 > n1 else n1
-    return (a1+an)*((an-(a1)+1)/2)
+#endregion MAIN
 
-
-def main():
-    n = lerNumero()
-    print('O somatório de 1 até %d é %d' % (n, somaTudoEntreDoisNumeros(1, n)))
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

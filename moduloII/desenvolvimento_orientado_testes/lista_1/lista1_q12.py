@@ -4,7 +4,6 @@ def somatorioNumero(numero):
          x = i + x
      print(f'\no somatorio de {i}, é {x}')
 
-        
 
 def main():
     while True:
