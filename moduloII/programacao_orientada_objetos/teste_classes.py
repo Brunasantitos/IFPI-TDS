@@ -1,26 +1,31 @@
-#coding: latin-1
+# LISTA 1 - QUESTÃO 14
+"""
+14. Escreva uma função que recebe por parâmetro um valor inteiro e positivo N e retorna o valor de S.
 
-def somatorio_fracoes(n):
-    s = 0
+S = 1 + 1/1! + 1/2! + 1/3! + 1 /N!
+"""
+
+def cacula_expressao(n):
+    s = 1
     for i in range(1, n + 1):
-        s += 1/i
+        s += 1/fatorial(i)
     return s
 
-#region MAIN
-def main():
-    while True:
-        try:
-            numero = int(input('Digite um n�mero inteiro positivo: '))
-            while numero <= 0:
-                numero = int(input("N�mero inv�lido! Digite um n�mero inteiro positivo! "))
-            print(f'O somat�rio das fra��es at� 1/{numero} � igual a: {somatorio_fracoes(numero):.2f}')
-            break
-        except:
-            print('!! DADO INV�LIDO !! Digite um n�mero inteiro positivo!')
 
-    
+def fatorial(k):
+    acc = 1
+    for i in range(k, 1, -1):
+        acc *= i
+    return acc
 
-#endregion MAIN
 
-if __name__ == '__main__':
-    main()
+while True:
+    try:
+        numero = int(input('Digite um número inteiro positivo: '))
+        while numero <= 0:
+            print('>>>>Número inválido... por favor, digite um número positivo e maior que Zero.\n')
+            numero = int(input('Digite um número inteiro positivo: '))
+        print(f'O resultado da expressão é: {cacula_expressao(numero):.3f}')
+        break
+    except:
+        print('Dado inválido! Por favor, digite novamente')
