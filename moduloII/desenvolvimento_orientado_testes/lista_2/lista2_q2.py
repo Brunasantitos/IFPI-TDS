@@ -5,8 +5,8 @@ def numeros_reais_positivos(numeros_positivos, contador):
 
         numeros_positivos.append(i)
 
-        print(f'\nNúmeros positivos {numeros_positivos}')
-        print(f'\nNúmeros positivos somados {soma_positivos}')
+    print(f'\nNúmeros positivos {numeros_positivos}')
+    print(f'Números positivos somados {soma_positivos}')
 
 def numeros_reais_negativos(numeros_negativos, contador):
     for i in range(-11, 0):
@@ -15,8 +15,8 @@ def numeros_reais_negativos(numeros_negativos, contador):
 
         numeros_negativos.append(i)
 
-        print(f'\nNúmeros numeros_negativos {numeros_negativos}')
-        print(f'\nNúmeros positivos somados {soma_negativos}')
+    print(f'\nNúmeros negativos {numeros_negativos}')
+    print(f'Números negativos somados {soma_negativos}')
 
 def main():
 

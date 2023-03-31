@@ -31,7 +31,11 @@ class ConsultaMedica:
 
   def cancelar_consulta(self):
     self.cancelado = False
-    
+
+  def agendar_retorno(self):
+    print("Retorno agendado")
+ 
+        
 
 def main():
     consultas = []
@@ -84,16 +88,16 @@ def main():
           
             retorno_paciente = input("Informe o cpf do paciente: ")
 
-            if retorno_paciente in consultas:
-              retorno.append(ConsultaMedica(input("entre com a data do retorno:(dd/mm/aaaa): "),input("entre com o nome do médico: "),
-                                          input("entre com o nome do paciente: "), input("cpf do paciente: ")))
+            for i in consultas:
+                if i.cpf_paciente == retorno_paciente and i.cancelado == False:
+                   retorno.append(ConsultaMedica(input("entre com a data do retorno:(dd/mm/aaaa): "),input("entre com o nome do médico: "),
+                                          input("entre com o nome do paciente: "), retorno_paciente))
 
-            else:
-              print("Não encontrado paciente")
+                else:
+                  print("Paciente não encontrado")
 
             
      
 
 if __name__=='__main__':
     main()
-

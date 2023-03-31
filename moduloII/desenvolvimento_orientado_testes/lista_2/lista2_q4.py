@@ -14,8 +14,17 @@ def posicao_elemento(lista_numeros):
     print(f'\nO menor número: {numero_minimo_lista} \nA sua posição: ')
         
 def main():
-    lista_numeros = []
-    posicao_elemento(lista_numeros)
+    while True:
+        try:
+            contador = 0
+            if contador <= 15:
+                numero = [int(input("Informe um número: "))]
+                contador += 1
+                posicao_elemento(numero)
+                break
+                
+        except:
+            print("Informe somente números válidos!")
 
 if __name__=='__main__':
     main()
