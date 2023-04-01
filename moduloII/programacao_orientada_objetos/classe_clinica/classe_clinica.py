@@ -70,8 +70,7 @@ def main():
         elif MenuAtendimento == '3':
           cont = 0
           for i,j in enumerate(consultas):
-              #seq+=1
-            
+                        
             if j.cancelado == False:
               cont+=1
               print(i,j)
