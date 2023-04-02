@@ -1,8 +1,9 @@
 class Pessoa:
-    def __init__(self,nome,idade,peso,estado="vivo(a)"):
+    def __init__(self,nome,idade,peso,altura,estado="vivo(a)"):
         self.nome = nome
         self.__idade = idade
         self.peso = peso
+        self.altura = altura
         self.__estado = estado
         
     def engordar(self,ganhar_peso):
@@ -11,7 +12,12 @@ class Pessoa:
         
     def emagrecer(self,perder_peso):
         self.peso -= perder_peso
-        print('você emagreceu')        
+        print('você emagreceu')
+
+    def altura(self,altura_atual):
+        if self.idade <= 21:
+            self.altura += altura_atual
+            print('você cresceu')            
         
     @property
     def idade(self):
@@ -24,7 +30,7 @@ class Pessoa:
 
 
     def __str__(self):
-        return f'Nome: {self.nome} \t Idade: {self.__idade} \t peso: {self.peso}'
+        return f'Nome: {self.nome} \t Idade: {self.__idade} \t peso: {self.peso} \t altura: {self.altura}'
 
 def menu():
   print('1-Listar pessoas')
@@ -45,7 +51,7 @@ def buscaPessoa(nome,pessoas):
 
 
 def main():
-  pessoas = [Pessoa("Maria",5,75),Pessoa("Pedro",22,54)]
+  pessoas = [Pessoa("Maria",5,75,162),Pessoa("Pedro",22,54,152)]
 
   while True:
     menu()
@@ -56,7 +62,7 @@ def main():
           print(i)
 
     if opcao == 2:
-        pessoas.append(Pessoa(input('nome: '),int(input('idade: ')),int(input('peso: '))))
+        pessoas.append(Pessoa(input('nome: ')),int(input('idade: ')),int(input('peso: ')),int(input('altura: ')))
 
     if opcao == 3:
         nome = input("Qual o nome da pessoa?")
@@ -75,6 +81,16 @@ def main():
             p.emagrecer(perder_peso)
         else:
             print("Pessoa não encontrada!")
+
+    if opcao == 5:
+        nome = input("Qual o nome da pessoa?")
+        p = buscaPessoa(nome,pessoas)
+        if p!=None:
+            altura_atual = int(input('Informe a altura: '))
+            p.altura(altura_atual)
+        else:
+            print("Pessoa não encontrada!")
+        
 
     if opcao == 8:
         nome = input("Qual o nome da pessoa?")
