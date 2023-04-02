@@ -17,7 +17,9 @@ class Pessoa:
     def crescer(self,altura_atual):
         if self.idade <= 21:
             self.altura += altura_atual
-            print('você cresceu')            
+            print('você cresceu')
+        elif self.idade > 21:
+            print('você não cresce mais')
         
     @property
     def idade(self):
@@ -62,7 +64,7 @@ def main():
           print(i)
 
     if opcao == 2:
-        pessoas.append(Pessoa(input('nome: ')),int(input('idade: ')),int(input('peso: ')),int(input('altura: ')))
+        pessoas.append(Pessoa(input('nome: '),int(input('idade: ')),int(input('peso: ')),int(input('altura em cm: '))))
 
     if opcao == 3:
         nome = input("Qual o nome da pessoa?")
@@ -86,7 +88,7 @@ def main():
         nome = input("Qual o nome da pessoa?")
         p = buscaPessoa(nome,pessoas)
         if p!=None:
-            altura_atual = int(input('Informe a altura: '))
+            altura_atual = int(input('Informe a altura em cm: '))
             p.crescer(altura_atual)
         else:
             print("Pessoa não encontrada!")
