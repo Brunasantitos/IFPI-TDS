@@ -14,7 +14,7 @@ class Pessoa:
         self.peso -= perder_peso
         print('você emagreceu')
 
-    def altura(self,altura_atual):
+    def crescer(self,altura_atual):
         if self.idade <= 21:
             self.altura += altura_atual
             print('você cresceu')            
@@ -87,7 +87,7 @@ def main():
         p = buscaPessoa(nome,pessoas)
         if p!=None:
             altura_atual = int(input('Informe a altura: '))
-            p.altura(altura_atual)
+            p.crescer(altura_atual)
         else:
             print("Pessoa não encontrada!")
         
