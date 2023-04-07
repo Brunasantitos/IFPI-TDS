@@ -1,10 +1,19 @@
 class Pessoa:
-    def __init__(self,nome,idade,peso,altura,estado="vivo(a)"):
+    def __init__(self,nome,idade,peso,altura,estado_civil='solteiro(a)',estado="vivo(a)"):
         self.nome = nome
         self.__idade = idade
         self.peso = peso
         self.altura = altura
+        self.__estado_civil = estado_civil
         self.__estado = estado
+
+    def envelhecer(self,idade_atual_para_crescer):
+        if self.idade <= 21:
+            self.__idade = idade_atual_para_crescer
+            self.altura += 5
+            print('você está mais velho')            
+        if self.idade > 21:
+            print('você não cresce mais')
         
     def engordar(self,ganhar_peso):
         self.peso += ganhar_peso
@@ -13,23 +22,36 @@ class Pessoa:
     def emagrecer(self,perder_peso):
         self.peso -= perder_peso
         print('você emagreceu')
-
-    def crescer(self,altura_atual):
-        if self.idade <= 21:
-            self.altura += altura_atual
-            print('você cresceu')
-        elif self.idade > 21:
-            print('você não cresce mais')
-        
+   
     @property
     def idade(self):
         return self.__idade
       
     @idade.setter
-    def idade(self,valor):
-        self.__idade += valor
-        print('você está mais velho')
+    def idade(self,idade_atual_para_crescer):
+        if self.__idade <= 21:
+            self.__idade = idade_atual_para_crescer
+            self.altura += 5
+            print('você está mais velho')
+        else:
+            self.__idade = idade_atual_para_crescer
+            print('você está mais velho')
 
+    @property
+    def estado_civil(self):
+        return self.__estado_civil
+
+    @estado_civil.setter
+    def estado_civil(self,conjugue,listaPessoas):
+        pass
+
+    @property
+    def estado(self):
+        return self.__estado
+
+    @estado.setter
+    def estado(self):
+        pass
 
     def __str__(self):
         return f'Nome: {self.nome} \t Idade: {self.__idade} \t peso: {self.peso} \t altura: {self.altura}'
@@ -88,12 +110,13 @@ def main():
         nome = input("Qual o nome da pessoa?")
         p = buscaPessoa(nome,pessoas)
         if p!=None:
-            altura_atual = int(input('Informe a altura em cm: '))
-            p.crescer(altura_atual)
+            idade_atual_para_crescer = int(input('Informe a sua idade: '))
+            p.envelhecer(idade_atual_para_crescer)
         else:
             print("Pessoa não encontrada!")
-        
-
+    if opcao == 6:
+       pass
+    
     if opcao == 8:
         nome = input("Qual o nome da pessoa?")
         p = buscaPessoa(nome,pessoas)
