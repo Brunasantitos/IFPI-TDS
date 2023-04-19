@@ -89,8 +89,13 @@ def main():
 
             for i in consultas:
                 if i.cpf_paciente == retorno_paciente and i.cancelado == False:
-                   retorno.append(ConsultaMedica(input("entre com a data do retorno:(dd/mm/aaaa): "),input("entre com o nome do médico: "),
-                                          input("entre com o nome do paciente: "), retorno_paciente))
+                   data_maxima_retorno = consultas[retorno_paciente].data_consulta+timedelta(days=30)
+                   print(f'Data máxima de retorno {data_maxima_retorno.strftime('%d/%m/%Y')}')
+                   data_retorno = input('Informe a data do retorno: ')
+                   data_retorno = datetime.strptime(data_retorno,'%d/%m/%Y').date()
+                   if data_retorno>data_maxima_retorno:
+                     print('Data inválida!')
+                   
 
                 else:
                   print("Paciente não encontrado")
