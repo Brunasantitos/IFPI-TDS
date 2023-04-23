@@ -1,24 +1,24 @@
-def definir_categoria(idade):
-    if type(idade) != int:
-        return Exception
-    if idade >= 5 and idade <= 7:
-        categoria = "Infantil A"
-    elif idade >= 8 and idade <=10:
-        categoria = "infanitl B"
-    elif idade >= 11 and idade <= 13:
-        categoria = "juvenil A"
-    elif idade >= 14 and idade <= 17:
-        categoria = "juvenil B"
-    elif idade >= 17 and idade <= 120:
-        categoria = "adulto"
-    else:
-        return Exception
-    return categoria
-assert definir_categoria("*") == Exception
-assert definir_categoria(-1) == Exception
-assert definir_categoria(10.35) == Exception
-assert definir_categoria(4) == Exception
-assert definir_categoria(400) == Exception
-assert definir_categoria(20) == "adulto"
+def entrada_sexo(sexo, h):
+    while True:
+        try:
+            if sexo == 1:
+                peso = ((62.1*h) - 44.7)
+                print(f'\nSeu peso idel é {peso}')
+            elif sexo == 2:
+                peso = ((72.7*h) - 58)
+                print(f'\nSeu peso ideal é {peso}')
+            break
+          
+        except:
+            print("Informe os valores válidos")
 
-print('testes OK')
+        break
+
+def main():
+    altura = float(input("Qual a sua altura: "))
+    sexo = int(input("\nInformeu seu sexo: [1]Feminno ou [2]Masculino: "))
+
+    entrada_sexo(sexo, altura)
+
+if __name__=='__main__':
+    main()
