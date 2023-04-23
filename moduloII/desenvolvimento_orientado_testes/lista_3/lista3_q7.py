@@ -21,4 +21,4 @@ assert definir_categoria(4) == Exception
 assert definir_categoria(400) == Exception
 assert definir_categoria(20) == "adulto"
 
-print('testes OK')
+print('Testes OK')
