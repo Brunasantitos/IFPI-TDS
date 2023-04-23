@@ -1,16 +1,21 @@
-def isPerfectNumber(num):
-    if type(num) == str:
-        return Exception
-    elif num <= 1: return False
-    sum = 1
-    for i in range(2,num+1):
-        if i*i <= num and num % i == 0:
-            sum += i
-            if i*i != num:
-                sum += num/i
-        i += 1
+def perfect(value):
+  if type(value) != int:
+    return Exception
+  else:
+    divider = 0
+    for c in range(1,value):
+      if value%c == 0:
+            divider += c
+    if divider == value:
+      return True
+    else:
+      return False    
     
-    return sum == num
+assert perfect(6) == True
+assert perfect(3) == False
+assert perfect(4.3) == Exception
+assert perfect('sete') == Exception
+assert perfect(True) == Exception
+assert perfect(7) == False
 
-assert isPerfectNumber(8) == True
-print("Testes ok.")
+print('testes ok!')
