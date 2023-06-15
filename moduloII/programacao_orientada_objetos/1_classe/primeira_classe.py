@@ -1,5 +1,8 @@
+#Primeira classe de POO
+#fazer uma classe, objeto geladeira
+
 class Eletrodomestico:
-    def __init__(self, marca, ano, modelo, cor, capacidade_liquida, temperatura_minima, temperatura_maxima, temperatura_atual, desligado):
+    def __init__(self, marca, ano, modelo, cor, capacidade_liquida, temperatura_minima, temperatura_maxima, temperatura_atual,desligado):
         self.marca = marca
         self.ano = ano
         self.modelo = modelo
@@ -21,7 +24,7 @@ class Eletrodomestico:
             print(f'\nGeladeira desligada.')
 
 def main():
-    geladeira = Eletrodomestico('samsung', 2019, 'frost free', 'branco', 345, 1, 18, True)
+    geladeira = Eletrodomestico('samsung', 2019, 'frost free', 'branco', 345, 1, 18, 16, True)
     geladeira.estado_eletro()
 
 if __name__=='__main__':
