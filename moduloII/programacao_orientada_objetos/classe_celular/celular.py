@@ -54,7 +54,7 @@ class Bateria:
 class Celular:
     def __init__(self, mei, wifi):
         self.__mei = mei
-        self.__bateria = pass
+        self.__bateria = None
         self.__wifi = wifi
         self.__ligar = False        
 
@@ -77,11 +77,11 @@ class Celular:
     
     def ligarDesligar(self):
         
-        
-        if pass >= 0:
+        if self.__bateria > 0:
             self.__ligar = True
             print(f'{self.__bateria}%')
             print("Ligando...")
+
         elif self.__bateria == 0:
             print("SEM BATERIA")
     
