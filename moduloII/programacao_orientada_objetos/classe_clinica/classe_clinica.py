@@ -1,3 +1,5 @@
+'''Classe clínica, funcionamento de um sistema para realizar agendamento de consulta'''
+
 from datetime import *
 
 class ConsultaMedica:
@@ -17,7 +19,7 @@ class ConsultaMedica:
 
     if dataAtual <= date.today() or dataAtual.weekday() in finalDeSemana:
         raise ValueError("data de consulta menor que data atual ou caiu em final de semana")
-        print("Valor:", dataAtual)
+        print(f'Valor: {dataAtual}')
 
     else:
         self.data_consulta = datetime.strptime(data_consulta,"%d/%m/%Y").date()
@@ -90,7 +92,7 @@ def main():
             for i in consultas:
                 if i.cpf_paciente == retorno_paciente and i.cancelado == False:
                    data_maxima_retorno = consultas[retorno_paciente].data_consulta+timedelta(days=30)
-                   print(f'Data máxima de retorno {data_maxima_retorno.strftime('%d/%m/%Y')}')
+                   print(f'Data máxima de retorno: {data_maxima_retorno.strftime("%d/%m/%Y")}')
                    data_retorno = input('Informe a data do retorno: ')
                    data_retorno = datetime.strptime(data_retorno,'%d/%m/%Y').date()
                    if data_retorno>data_maxima_retorno:

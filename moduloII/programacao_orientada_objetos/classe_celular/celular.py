@@ -4,7 +4,7 @@ class Bateria:
     def __init__(self, codigo, capacidade):
         self.__codigo = codigo
         self.__capacidade = capacidade
-        self.__percentual_carga = random.randint(0,100)
+        self._percentual_carga = random.randint(0,100)
 
     @property
     def codigo(self):
@@ -20,16 +20,17 @@ class Bateria:
 
     @property
     def percentual_carga(self):
-        return self.__percentual_carga
+        return self._percentual_carga
+
 
     def carregar(self,valor):
         if valor >= 0:
             if valor < 100:
                 print(f'bateria em {valor}%')
-                self.__percentual_carga = 100
+                self._percentual_carga = 100
                 print("carregando...")
             else:
-                print("100%")
+                print("bateria em 100%")
         else:
             raise "error" 
             
@@ -37,13 +38,13 @@ class Bateria:
     def descarregar(self,valor):
         if valor >= 0:
             if valor == 0:
-                self.__percentual_carga = valor
+                self._percentual_carga = valor
                 print("descarregado")
-                print(f'{self.__percentual_carga}%')
+                print(f'{self._percentual_carga}%')
             elif valor < 100:
                 valor -= 1
-                self.__percentual_carga = valor
-                print(f'bateria em {self.__percentual_carga}%')
+                self._percentual_carga = valor
+                print(f'bateria em {self._percentual_carga}%')
                 print("descarregando...")
         else:
             raise "error"
@@ -53,9 +54,9 @@ class Bateria:
 class Celular:
     def __init__(self, mei, wifi):
         self.__mei = mei
-        #self.__bateria = Bateria(1, 3000)
+        self.__bateria = pass
         self.__wifi = wifi
-        #self.__ligar = False        
+        self.__ligar = False        
 
     @property
     def mei(self):
@@ -69,19 +70,25 @@ class Celular:
     def wifi(self):
         return self.__wifi
     
-    '''
+    @property
+    def ligar(self):
+        return self.__ligar
+    
+    
     def ligarDesligar(self):
-        self.__ligar = not self.__ligar
-        if self.__bateria >= 0:
+        
+        
+        if pass >= 0:
+            self.__ligar = True
             print(f'{self.__bateria}%')
             print("Ligando...")
         elif self.__bateria == 0:
             print("SEM BATERIA")
-    '''
+    
 
 def main():
     bateria = Bateria(1, 3000)
-    celular = Celular("123456789", True)
+    celular1 = Celular("123456789", True)
     while True:
         print('1-ligar')
         print('2-desligar')
@@ -90,10 +97,10 @@ def main():
         entrada = int(input("Digite uma opção: "))
 
         if entrada == 1:
-            celular.ligarDesligar()
+            celular1.ligarDesligar()
 
         elif entrada == 2:
-            celular.ligarDesligar()
+            celular1.ligarDesligar()
 
         elif entrada == 3:
             pc_bateria = int(input("Porcentagem da bateria -> "))
