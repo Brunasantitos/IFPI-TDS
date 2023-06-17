@@ -89,6 +89,7 @@ class Celular:
 def main():
     bateria = Bateria(1, 3000)
     celular1 = Celular("123456789", True)
+    
     while True:
         print('1-ligar')
         print('2-desligar')
