@@ -51,9 +51,9 @@ class Bateria:
 class Celular:
     def __init__(self, bateria):
         self.__mei = 14536789
-        self.bateria = bateria
+        self.__bateria = bateria
         self.__wifi = False
-        self.__ligar = False        
+        self.__ligar = False       
     
     @property
     def mei(self):
@@ -64,18 +64,22 @@ class Celular:
         return self.__wifi
     
     @property
+    def bateria(self):
+        return self.__bateria
+    
+    @property
     def ligar(self):
         return self.__ligar
     
     
     def ligarDesligar(self):
         
-        if self.bateria > 0:
+        if self.__bateria > 0:
 
             self.__ligar = True
             print (f'Celular ligado')
 
-        elif self.bateria == 0:
+        elif self.__bateria == 0:
             print ("SEM BATERIA")
 
 
@@ -84,13 +88,14 @@ class Celular:
             print('Celular desligado')
 
     def __str__(self) -> str:
-        return f'{self.__ligar}'
+        return f'{self.__ligar} {self.__bateria}'
     
 
 def main():
-    b1 = Bateria(50)
+    b1 = Bateria(100)
     celular1 =  Celular(b1)
-    celular1.ligarDesligar()
+
+    celular1.ligarDesligar = b1
     b1.carregar(100)
     print(b1)
     print(celular1)
