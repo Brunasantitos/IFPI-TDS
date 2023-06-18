@@ -1,10 +1,8 @@
-import random
-
 class Bateria:
-    def __init__(self, capacidade):
+    def __init__(self, percentual):
         self.__codigo = "A37"
-        self.capacidade = capacidade
-        self.__percentual_carga = random.randint(0,100)
+        self.capacidade = 100
+        self.__percentual_carga = percentual
     
     @property
     def codigo(self):
@@ -20,7 +18,7 @@ class Bateria:
         if valor >= 0:
             self.__percentual_carga = 100
             if valor < 100:
-                print ("carregando...")
+                return self.__percentual_carga
                 
             else:
                 return self.__percentual_carga
@@ -33,9 +31,7 @@ class Bateria:
         if valor >= 0:
             if valor == 0:
                 self.__percentual_carga = valor
-                print(f'celular descarregado')
-            
-                
+                return self.__percentual_carga
 
             elif valor < 100:
                 valor -= 1
@@ -46,12 +42,12 @@ class Bateria:
             raise "error"
         
     def __str__(self):
-        return f'bateria em {self.__percentual_carga}%'
+        return f'{self.__percentual_carga}'
 
 class Celular:
     def __init__(self, bateria):
         self.__mei = 14536789
-        self.__bateria = bateria
+        self.__bateria = None
         self.__wifi = False
         self.__ligar = False       
     
@@ -73,21 +69,40 @@ class Celular:
     
     
     def ligarDesligar(self):
+
+        if self.__bateria == None:
+            raise "error"
         
-        if self.__bateria > 0:
+        elif self.__bateria != None:
+        
+            if '''valor da classe bateria''' > 0:
+                self.__ligar = True
+                print (f'Celular ligado')
 
-            self.__ligar = True
-            print (f'Celular ligado')
+            elif '''valor da classe bateria''' == 0:
+                print ("SEM BATERIA")
 
-        elif self.__bateria == 0:
-            print ("SEM BATERIA")
+            elif self.__ligar == True:
+                self.__ligar = False
+                print('Celular desligado')
 
+    def colocar_bateria(self, bateria):
 
-        elif self.__ligar == True:
-            self.__ligar = False
-            print('Celular desligado')
+        if self.__bateria == None:
+            self.__bateria = bateria
+        else:
+            self.retirarBateria()
+            self.__bateria = bateria
 
-    def __str__(self) -> str:
+    def retirar_bateria(self):
+        self.__bateria = None
+
+    def ligar_desligar_wifi(self):
+        if self.__ligar == True:
+            self.__wifi = True
+            print('wifi ligado')
+
+    def __str__(self):
         return f'{self.__ligar} {self.__bateria}'
     
 
@@ -97,7 +112,6 @@ def main():
 
     celular1.ligarDesligar = b1
     b1.carregar(100)
-    print(b1)
     print(celular1)
     
 
