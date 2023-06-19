@@ -12,11 +12,44 @@ class Bateria:
     def percentual_carga(self):
         return self._percentual_carga
     
+
+    def carregar(self,valor):
+
+        if valor >= 0:
+            self.__percentual_carga = 100
+            if valor < 100:
+                return self.__percentual_carga
+                
+            else:
+                return self.__percentual_carga
+        else:
+            raise "error" 
+        
+
+    def descarregar(self,valor):
+
+        if valor >= 0:
+            if valor == 0:
+                self.__percentual_carga = valor
+                return self.__percentual_carga
+
+            elif valor < 100:
+                valor -= 1
+                self.__percentual_carga = valor
+                return self.__percentual_carga
+                
+        else:
+            raise "error"
+        
+    
+    def __str__(self):
+        return f'bateria em {self._percentual_carga}%'
+    
          
 class Celular:
     def __init__(self, bateria):
         self.__mei = 14536789
-        self.__bateria = None
+        self.__bateria = bateria
         self.__wifi = False
         self.__ligar = False       
     
@@ -42,13 +75,13 @@ class Celular:
         if self.__bateria == None:
             raise "error"
         
-        elif self.__bateria != None:
+        elif self.__bateria.percentual_carga != None:
         
-            if '''valor da classe bateria''' > 0:
+            if self.__bateria.percentual_carga > 0:
                 self.__ligar = True
                 print (f'Celular ligado')
 
-            elif '''valor da classe bateria''' == 0:
+            elif self.__bateria.percentual_carga == 0:
                 print ("SEM BATERIA")
 
             elif self.__ligar == True:
@@ -57,7 +90,7 @@ class Celular:
 
     def colocar_bateria(self, bateria):
 
-        if self.__bateria == None:
+        if self.__bateria.percentual_carga == None:
             self.__bateria = bateria
         else:
             self.retirarBateria()
@@ -108,10 +141,11 @@ class Celular:
     
 
 def main():
-    b1 = Bateria(100)
+    b1 = Bateria(10)
     celular1 =  Celular(b1)
 
-    celular1.ligarDesligar = b1
+    b1.carregar(100)
+    celular1.ligarDesligar()
     print(b1)
     print(celular1)
     
