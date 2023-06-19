@@ -2,7 +2,7 @@ class Bateria:
     def __init__(self, percentual):
         self.__codigo = "A37"
         self.capacidade = 100
-        self.__percentual_carga = percentual
+        self._percentual_carga = percentual
     
     @property
     def codigo(self):
@@ -10,38 +10,9 @@ class Bateria:
 
     @property
     def percentual_carga(self):
-        return self.__percentual_carga
+        return self._percentual_carga
     
-
-    def carregar(self,valor):
-
-        if valor >= 0:
-            self.__percentual_carga = 100
-            if valor < 100:
-                return self.__percentual_carga
-                
-            else:
-                return self.__percentual_carga
-        else:
-            raise "error" 
-            
-
-    def descarregar(self,valor):
-
-        if valor >= 0:
-            if valor == 0:
-                self.__percentual_carga = valor
-                return self.__percentual_carga
-
-            elif valor < 100:
-                valor -= 1
-                self.__percentual_carga = valor
-                return self.__percentual_carga
-                
-        else:
-            raise "error"
-        
-    
+         
 class Celular:
     def __init__(self, bateria):
         self.__mei = 14536789
@@ -104,10 +75,33 @@ class Celular:
         pass
 
     def carregar(self,valor):
-        pass
+
+        if valor >= 0:
+            self.__percentual_carga = 100
+            if valor < 100:
+                return self.__percentual_carga
+                
+            else:
+                return self.__percentual_carga
+        else:
+            raise "error" 
+        
 
     def descarregar(self,valor):
-        pass
+
+        if valor >= 0:
+            if valor == 0:
+                self.__percentual_carga = valor
+                return self.__percentual_carga
+
+            elif valor < 100:
+                valor -= 1
+                self.__percentual_carga = valor
+                return self.__percentual_carga
+                
+        else:
+            raise "error"
+        
 
     def __str__(self):
         return f'{self.__ligar} {self.__bateria}'
@@ -118,7 +112,6 @@ def main():
     celular1 =  Celular(b1)
 
     celular1.ligarDesligar = b1
-    b1.carregar(100)
     print(b1)
     print(celular1)
     
