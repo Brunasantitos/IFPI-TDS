@@ -51,7 +51,7 @@ class Celular:
     def __init__(self, bateria):
         self.__mei = 14536789
         self.__bateria = bateria
-        self.__wifi = False
+        self.__wifi = 'desligar'
         self.__ligar = False       
     
     @property
@@ -101,10 +101,13 @@ class Celular:
         self.__bateria = None
         
 
-    def ligar_desligar_wifi(self):
-        if self.__ligar == True:
-            self.__wifi = True
+    def ligar_desligar_wifi(self,valor):
+        if valor == 'ligar':
+            self.__wifi = 'ligado'
             print('wifi ligado')
+
+        elif valor == 'desligar':
+            print('wifi desligado')
 
     def assistir_video_tempo(self, tempo):
         pass
@@ -161,7 +164,7 @@ def main():
 
     celular1.ligarDesligar()
     
-    celular1.ligar_desligar_wifi()
+    celular1.ligar_desligar_wifi('ligar')
     print(celular1)
                 
     
