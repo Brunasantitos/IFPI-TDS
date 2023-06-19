@@ -160,10 +160,12 @@ def main():
     celular1 =  Celular(b1)
 
     celular1.ligarDesligar()
-    
-    celular1.ligar_desligar_wifi('ligar')
+    celular1.assistir_video_tempo(10)
     print(celular1)
+    
+    
                 
     
+if __name__=='__main__':
 
-main()
+    main()
