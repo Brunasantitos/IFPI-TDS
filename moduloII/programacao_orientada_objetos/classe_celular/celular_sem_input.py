@@ -41,9 +41,7 @@ class Bateria:
         else:
             raise "error"
         
-    def __str__(self):
-        return f'{self.__percentual_carga}'
-
+    
 class Celular:
     def __init__(self, bateria):
         self.__mei = 14536789
@@ -102,6 +100,15 @@ class Celular:
             self.__wifi = True
             print('wifi ligado')
 
+    def assistir_video_tempo(self, tempo):
+        pass
+
+    def carregar(self,valor):
+        pass
+
+    def descarregar(self,valor):
+        pass
+
     def __str__(self):
         return f'{self.__ligar} {self.__bateria}'
     
@@ -112,6 +119,7 @@ def main():
 
     celular1.ligarDesligar = b1
     b1.carregar(100)
+    print(b1)
     print(celular1)
     
 
