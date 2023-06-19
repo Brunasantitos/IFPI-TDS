@@ -103,11 +103,11 @@ class Celular:
         if self.__ligar == False:
             return "error"
 
-        elif valor == 'ligar':
+        elif valor.lower() == 'ligar':
             self.__wifi = 'ligado'
             print('wifi ligado')
 
-        elif valor == 'desligar':
+        elif valor.lower() == 'desligar':
             print('wifi desligado')
 
     def assistir_video_tempo(self, tempo):
@@ -125,43 +125,22 @@ class Celular:
                     if i + 1:
                         bateria_atual -= 5
                         if bateria_atual <= 0:
+                            
                             self.__ligar = False
-                
-
+                            
                 self.__bateria = bateria_atual
-                        
-
+            
         else:
             print("Wifi desligado, não é possível assistir")
                       
 
     def carregar(self,valor):
 
-        if valor >= 0:
-            self.__percentual_carga = 100
-            if valor < 100:
-                return self.__percentual_carga
-                
-            else:
-                return self.__percentual_carga
-        else:
-            raise "error" 
-        
+        pass
 
     def descarregar(self,valor):
 
-        if valor >= 0:
-            if valor == 0:
-                self.__percentual_carga = valor
-                return self.__percentual_carga
-
-            elif valor < 100:
-                valor -= 1
-                self.__percentual_carga = valor
-                return self.__percentual_carga
-                
-        else:
-            raise "error"
+        pass
         
 
     def __str__(self):
@@ -183,22 +162,33 @@ class Celular:
 
 def main():
     b1 = Bateria(100)
+    b2 = Bateria(55)
 
-    celular1 =  Celular(b1)
-    #celular2 = Celular(b1)
+    celular1 = Celular(b1)
+    celular2 = Celular(b1)
+    celular3 = Celular(b2)
+    celular4 = Celular(b1)
 
     print("CELULAR 1")
     celular1.ligarDesligar()
     celular1.ligar_desligar_wifi('ligar')
-    celular1.assistir_video_tempo(21)
+    celular1.assistir_video_tempo(10)
     print(celular1)
-    print(30*"_")
-    
-    
-   
-    
-    
-                
+    print(100*"_")
+    celular2.ligarDesligar()
+    celular2.ligar_desligar_wifi('desligar')
+    celular2.assistir_video_tempo(1)
+    print(celular2)
+    print(100*"_")
+    celular3.ligarDesligar()
+    celular3.ligar_desligar_wifi('LIGAR')
+    celular3.assistir_video_tempo(15)   
+    print(celular3)
+    print(100*"_") 
+    celular4.ligarDesligar()
+    celular4.ligar_desligar_wifi('LIGAR')
+    celular4.assistir_video_tempo(11)  
+    print(celular4)      
     
 if __name__=='__main__':
 
