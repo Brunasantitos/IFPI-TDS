@@ -112,17 +112,24 @@ class Celular:
 
     def assistir_video_tempo(self, tempo):
         
-        if self.__wifi == 'ligado':
-            minuto = (tempo*60) 
-            print(minuto)
-            bateria_valor = self.__bateria.percentual_carga
+        if self.__wifi == 'ligado':           
                           
             if self.__bateria.percentual_carga <= 0:
                 print("BATERIA FRACA" )
 
             elif self.__bateria.percentual_carga > 0:
-                self.__bateria = (bateria_valor - minuto)
                 print("assistindo...")
+                bateria_atual = self.__bateria.percentual_carga
+                for i in range(0,tempo):
+
+                    if i + 1:
+                        bateria_atual -= 5
+                        if bateria_atual <= 0:
+                            self.__ligar = False
+                
+
+                self.__bateria = bateria_atual
+                        
 
         else:
             print("Wifi desligado, não é possível assistir")
@@ -183,7 +190,7 @@ def main():
     print("CELULAR 1")
     celular1.ligarDesligar()
     celular1.ligar_desligar_wifi('ligar')
-    celular1.assistir_video_tempo(300)
+    celular1.assistir_video_tempo(21)
     print(celular1)
     print(30*"_")
     
