@@ -2,7 +2,7 @@ class Bateria:
     def __init__(self, percentual):
         self.__codigo = "A37"
         self.capacidade = 100
-        self._percentual_carga = percentual
+        self.__percentual_carga = percentual
     
     @property
     def codigo(self):
@@ -10,7 +10,7 @@ class Bateria:
 
     @property
     def percentual_carga(self):
-        return self._percentual_carga
+        return self.__percentual_carga
     
 
     def carregar(self,valor):
@@ -43,7 +43,7 @@ class Bateria:
         
     
     def __str__(self):
-        return f'bateria em {self._percentual_carga}%'
+        return f'bateria em {self.__percentual_carga}%'
     
          
 class Celular:
