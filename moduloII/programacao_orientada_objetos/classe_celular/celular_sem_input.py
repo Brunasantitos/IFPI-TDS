@@ -82,10 +82,7 @@ class Celular:
             print ("SEM BATERIA")
 
         elif self.__ligar == True:
-            self.__ligar = False
-            
-
-        
+            self.__ligar = False 
 
     def colocar_bateria(self, bateria):
 
