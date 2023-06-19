@@ -15,6 +15,7 @@ class Bateria:
 
     def carregar(self,valor):
 
+
         if valor >= 0:
             self.__percentual_carga = 100
             if valor < 100:
@@ -43,7 +44,7 @@ class Bateria:
         
     
     def __str__(self):
-        return f'bateria em {self.__percentual_carga}%'
+        return f'{self.__percentual_carga}'
     
          
 class Celular:
@@ -71,33 +72,34 @@ class Celular:
     
     
     def ligarDesligar(self):
-
         if self.__bateria == None:
-            raise "error"
+            print("celular sem bateria")
         
-        elif self.__bateria.percentual_carga != None:
+        elif self.__bateria.percentual_carga > 0:
+            self.__ligar = True
+          
+        elif self.__bateria.percentual_carga == 0:
+            print ("SEM BATERIA")
+
+        elif self.__ligar == True:
+            self.__ligar = False
+            
+
         
-            if self.__bateria.percentual_carga > 0:
-                self.__ligar = True
-                print (f'Celular ligado')
-
-            elif self.__bateria.percentual_carga == 0:
-                print ("SEM BATERIA")
-
-            elif self.__ligar == True:
-                self.__ligar = False
-                print('Celular desligado')
 
     def colocar_bateria(self, bateria):
 
-        if self.__bateria.percentual_carga == None:
+        if self.__bateria == None:
             self.__bateria = bateria
+            
         else:
-            self.retirarBateria()
+            self.retirar_bateria()
             self.__bateria = bateria
+            
 
     def retirar_bateria(self):
         self.__bateria = None
+        
 
     def ligar_desligar_wifi(self):
         if self.__ligar == True:
@@ -137,18 +139,31 @@ class Celular:
         
 
     def __str__(self):
-        return f'{self.__ligar} {self.__bateria}'
+
+        if self.__ligar == False:
+            return f'\ncelular desligado'
+        
+        elif self.__ligar == True:
+
+            if self.__bateria == None:
+                return "\ncelular sem bateria"
+            
+        return f'\ncelular ligado, bateria em {self.__bateria}%'
+        
+        
+
+
     
 
 def main():
-    b1 = Bateria(10)
+    b1 = Bateria(50)
     celular1 =  Celular(b1)
 
-    b1.carregar(100)
     celular1.ligarDesligar()
-    print(b1)
+    
+    celular1.ligar_desligar_wifi()
     print(celular1)
+                
     
 
-if __name__=='__main__':
-    main()
+main()
