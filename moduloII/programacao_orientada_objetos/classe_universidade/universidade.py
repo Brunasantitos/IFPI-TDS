@@ -2,7 +2,7 @@ class Sisu(object):
     __universidades = []
   
     def inclui_universidade(universidade):
-        if type(universidade)== universidade:
+        if type(universidade) == Universidade:
             Sisu.__universidades.append(universidade)
       
     def busca_universidade(nome):
@@ -14,43 +14,43 @@ class Sisu(object):
 
 class Universidade:
     def __init__(self,sigla,nome,tipo):
-        self.__sigla = sigla
-        self.__nome = nome
-        self.__tipo = tipo
+        self.__sigla_universidade = sigla
+        self.__nome_universidade = nome
+        self.__tipo_universidade = tipo
         self.__cursos = []
 
     @property
-    def sigla(self):
-        return self.__sigla
+    def sigla_universidade(self):
+        return self.__sigla_universidade
     
     @property
-    def nome(self):
-        return self.__nome
+    def nome_universidade(self):
+        return self.__nome_universidade
     
     @property
-    def tipo(self):
-        return self.__tipo
+    def tipo_universidade(self):
+        return self.__tipo_universidade
     
     @property
     def cursos(self):
         return self.__cursos
     
     def cadastrar_curso(self,curso):
-        if type(curso)==Curso:
+        if type(curso) == Curso:
             self.__cursos.append(curso)
             print(f'curso cadastrado com sucesso!')
         else:
             print("Erro!")
       
     def buscar_curso(self,curso):
-        for i in self.__alunos:
+        for i in self.alunos:
             if i.curso == curso:
                 return i
         return None
     
     def matricula_aluno(self,aluno,curso):
-        if self.buscar_curso(curso.nome)!=None:
-            if aluno.nota_enem >= curso.nota_corte:
+        if self.buscar_curso(curso.nome)!= None:
+            if aluno.ponto_enem >= curso.nota_corte_curso:
                 pass
          
     def __str__(self):
@@ -61,38 +61,57 @@ class Universidade:
         return cab+dados
 
 class Curso:
-    def __init__(self,id,nome,vagas,nota_corte):
-        self.__id = id
-        self.__nome = nome
-        self.__vagas = vagas
-        self.__nota_corte = nota_corte
+    def __init__(self,id,nome,duracao,vagas,nota_corte):
+        self.__id_curso = id
+        self.__nome_curso = nome
+        self.__duracao_curso = duracao
+        self.__vagas_curso = vagas
+        self.__nota_corte_curso = nota_corte
         self.alunos = []
 
     @property
-    def id(self):
-        return self.__id
+    def id_curso(self):
+        return self.__id_curso
     
-    def incluir_aluno(self):
+    @property
+    def nome_curso(self):
+        return self.__nome_curso
+    
+    @property
+    def duracao_curso(self):
+        return self.__duracao_curso
+    
+    @property
+    def vagas_curso(self):
+        return self.__vagas_curso
+    
+    @property
+    def nota_corte_curso(self):
+        return self.__nota_corte_curso
+    
+    def cadastrar_aluno(self):
         pass
 
+    '''
     def buscar_aluno(self):
         pass
 
     def solicitar_entrada(self):
         pass
-
+    '''
     def __str__(self):
-        cab = f'curso:{self.__nome} - Relação de alunos'
-        for i in self.__alunos:
+        cab = f'curso:{self.__nome_curso} - Relação de alunos'
+        for i in self.alunos:
             pass
 
 class Aluno:
     def __init__(self,cpf,nome,dt_nasc,ponto_enem):
         self.__cpf = cpf
-        self.nome = nome
-        self.dt_nasc = dt_nasc
+        self.nome_aluno = nome
+        self.dt_nasc_aluno = dt_nasc
         self.ponto_enem = ponto_enem
         self.matricula_publica = False
+        self.matricula_privada = False
     
     @property
     def cpf(self):
@@ -108,27 +127,33 @@ class Aluno:
         if self.solicita_entrada(curso,universidade):
             pass
 
-    def solita_transferencia(self,univ_ori,curso_ori,univ_dest):
+    def solita_transferencia(self,universidade_origem,curso_origem,univ_destino):
         pass
-    
+
     def __str__(self):
         pass  
 
 def main():
-    maria = Aluno ("11111111111111","Maria","01/02/1990")
-    josé = Aluno ("22222222222","José","15/12/1998")
+    maria = Aluno ("11111111111111","Maria","01/02/1990",800)
+    josé = Aluno ("22222222222","José","15/12/1998",400)
     uespi = Universidade('UESPI','Universidade Estadual do Piauí','publico')
     ufpi = Universidade('UFPI','Universidade Federal do Piauí','publico')
     novafapi = Universidade('NovaFapi','NovaFapi', 'particular')
+    enfermagem = Curso(111,'enfermanem',3,40,700)
+    pedagogia = Curso(222,'pedagogia',6,45,600)
+    medicina = Curso(333,'medicina',10,50,850)
+
+
 
     Sisu.inclui_universidade(uespi)
     Sisu.inclui_universidade(ufpi)
     Sisu.inclui_universidade(novafapi)
 
-    uespi.inclui_aluno(maria)
-    ufpi.inclui_aluno(maria)
-    ufpi.inclui_aluno(josé)
-    novafapi.inclui_aluno(Aluno('33333333333','Ana','14/06/2000'))
+    uespi.matricula_aluno(maria,'pedagogia')
+    ufpi.matricula_aluno(maria,'medicina')
+    ufpi.matricula_aluno(josé,'enfermagem')
+    novafapi.matricula_aluno(Aluno('33333333333','Ana','14/06/2000',850))
+
     print(uespi)
     print(ufpi)
     print(novafapi)
