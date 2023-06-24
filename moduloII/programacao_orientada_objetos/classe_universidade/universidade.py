@@ -41,13 +41,14 @@ class Universidade:
             print(f'curso cadastrado com sucesso!')
         else:
             print("Erro!")
-    '''
+    
     def buscar_curso(self,curso):
         for i in self.alunos:
             if i.curso == curso:
                 return i
         return None
     
+    '''
     def matricula_aluno(self,aluno,curso):
         if self.buscar_curso(curso.nome)!= None:
             if aluno.ponto_enem >= curso.nota_corte_curso:
@@ -136,16 +137,17 @@ class Aluno:
         pass
 
     def __str__(self):
-        pass  
+        if self.ponto_enem > 0:
+            return f'{self.nome_aluno} matriculado'
 
 def main():
-    ''' 
+    #CADASTRANDO ALUNOS
     maria = Aluno ("11111111111111","Maria","01/02/1990",800)
     jose = Aluno ("22222222222","José","15/12/1998",400)
     print(maria)
     print(jose)
-    ''' 
     
+    #CADASTRANDO UNIVERSIDADES
     uespi = Universidade('UESPI','Universidade Estadual do Piauí','publico')
     ufpi = Universidade('UFPI','Universidade Federal do Piauí','publico')
     novafapi = Universidade('NovaFapi','NovaFapi', 'particular')
@@ -153,6 +155,7 @@ def main():
     print(ufpi)
     print(novafapi)
 
+    #CADASTRANDO CURSOS
     enfermagem = Curso(111,'enfermanem',3,40,700)
     pedagogia = Curso(222,'pedagogia',6,45,600)
     medicina = Curso(333,'medicina',10,50,850)
