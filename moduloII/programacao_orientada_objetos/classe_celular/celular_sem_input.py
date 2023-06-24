@@ -12,9 +12,7 @@ class Bateria:
     def percentual_carga(self):
         return self.__percentual_carga
     
-
     def carregar(self,valor):
-
 
         if valor >= 0:
             self.__percentual_carga = 100
@@ -26,7 +24,6 @@ class Bateria:
         else:
             raise "error" 
         
-
     def descarregar(self,valor):
 
         if valor >= 0:
@@ -96,7 +93,6 @@ class Celular:
 
     def retirar_bateria(self):
         self.__bateria = None
-        
 
     def ligar_desligar_wifi(self,valor):
 
@@ -133,15 +129,17 @@ class Celular:
         else:
             print("Wifi desligado, não é possível assistir")
                       
+    def carregar_celular(self):
+         if self.__bateria < 100 :
+            x = Bateria()
+            valor_carregar = x.carregar()
+            print('bateria carregada')
 
-    def carregar(self,valor):
-
-        pass
-
-    def descarregar(self,valor):
-
-        pass
+             
         
+
+    def descarregar_celular(self,valor):
+        pass  
 
     def __str__(self):
 
@@ -153,26 +151,25 @@ class Celular:
             if self.__bateria == None:
                 return "\ncelular sem bateria"
             
-        return f'\ncelular ligado, bateria em {self.__bateria}%'
-        
-        
-
-
-    
+        return f'\ncelular ligado, bateria em {self.__bateria}%'   
 
 def main():
     b1 = Bateria(100)
-    b2 = Bateria(55)
+    #b2 = Bateria(55)
 
     celular1 = Celular(b1)
+    '''
     celular2 = Celular(b1)
     celular3 = Celular(b2)
     celular4 = Celular(b1)
+    '''
 
     print("CELULAR 1")
     celular1.ligarDesligar()
     celular1.ligar_desligar_wifi('ligar')
     celular1.assistir_video_tempo(10)
+    celular1.carregar()
+    '''
     print(celular1)
     print(100*"_")
     celular2.ligarDesligar()
@@ -188,8 +185,8 @@ def main():
     celular4.ligarDesligar()
     celular4.ligar_desligar_wifi('LIGAR')
     celular4.assistir_video_tempo(11)  
-    print(celular4)      
+    print(celular4)   
+    '''   
     
 if __name__=='__main__':
-
     main()
