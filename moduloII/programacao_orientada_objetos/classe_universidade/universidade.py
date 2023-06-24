@@ -41,7 +41,7 @@ class Universidade:
             print(f'curso cadastrado com sucesso!')
         else:
             print("Erro!")
-      
+    '''
     def buscar_curso(self,curso):
         for i in self.alunos:
             if i.curso == curso:
@@ -52,14 +52,17 @@ class Universidade:
         if self.buscar_curso(curso.nome)!= None:
             if aluno.ponto_enem >= curso.nota_corte_curso:
                 pass
-         
+    '''     
     def __str__(self):
-        cab = f'{self.__sigla}- Relação de alunos\n'
+    
+        cab = f'{self.__sigla_universidade}\n'
         dados=''
+        ''' 
         for i in self.__alunos:
             dados += f'CPF:{i.cpf}  Nome:{i.nome}\n'
+        ''' 
         return cab+dados
-
+        
 class Curso:
     def __init__(self,id,nome,duracao,vagas,nota_corte):
         self.__id_curso = id
@@ -100,9 +103,11 @@ class Curso:
         pass
     '''
     def __str__(self):
-        cab = f'curso:{self.__nome_curso} - Relação de alunos'
-        for i in self.alunos:
-            pass
+        cab = f'curso: {self.__nome_curso}'
+        return cab
+
+        #for i in self.alunos:
+            
 
 class Aluno:
     def __init__(self,cpf,nome,dt_nasc,ponto_enem):
@@ -134,31 +139,40 @@ class Aluno:
         pass  
 
 def main():
+    ''' 
     maria = Aluno ("11111111111111","Maria","01/02/1990",800)
-    josé = Aluno ("22222222222","José","15/12/1998",400)
+    jose = Aluno ("22222222222","José","15/12/1998",400)
+    print(maria)
+    print(jose)
+    ''' 
+    
     uespi = Universidade('UESPI','Universidade Estadual do Piauí','publico')
     ufpi = Universidade('UFPI','Universidade Federal do Piauí','publico')
     novafapi = Universidade('NovaFapi','NovaFapi', 'particular')
+    print(uespi)
+    print(ufpi)
+    print(novafapi)
+
     enfermagem = Curso(111,'enfermanem',3,40,700)
     pedagogia = Curso(222,'pedagogia',6,45,600)
     medicina = Curso(333,'medicina',10,50,850)
-
-
+    print(enfermagem)
+    print(pedagogia)
+    print(medicina)
 
     Sisu.inclui_universidade(uespi)
     Sisu.inclui_universidade(ufpi)
     Sisu.inclui_universidade(novafapi)
 
+    ''' 
     uespi.matricula_aluno(maria,'pedagogia')
     ufpi.matricula_aluno(maria,'medicina')
-    ufpi.matricula_aluno(josé,'enfermagem')
+    ufpi.matricula_aluno(jose,'enfermagem')
     novafapi.matricula_aluno(Aluno('33333333333','Ana','14/06/2000',850))
-
-    print(uespi)
-    print(ufpi)
-    print(novafapi)
+    
     print(maria.matricula_publica)
-    print(josé.matricula_publica)
+    print(jose.matricula_publica)
+    ''' 
 
 if __name__=='__main__':
     main()
