@@ -72,10 +72,10 @@ class Universidade:
     
         cab = f'{self.__sigla_universidade}\n'
         dados=''
-        ''' 
+        
         for i in self.__alunos:
             dados += f'CPF:{i.cpf}  Nome:{i.nome}\n'
-        ''' 
+        
         return cab+dados
         
 class Curso:
@@ -105,22 +105,35 @@ class Curso:
     
     @property
     def nota_corte_curso(self):
-        return self.__nota_corte_curso
+        return self.__nota_corte_curso  
     
-    def cadastrar_aluno(self):
-        pass
-
+    def cadastrar_aluno(self, aluno):
+        if isinstance(aluno, Aluno):
+            self.alunos.append(aluno)
+            print(f'O aluno {aluno.nome_aluno} foi cadastrado no curso {self.nome_curso}.')
+        else:
+            print('Erro: O objeto fornecido não é uma instância da classe Aluno.')
     
-    def buscar_aluno(self):
-        pass
+    def buscar_aluno(self, cpf):
+        for aluno in self.alunos:
+            if aluno.cpf == cpf:
+                return aluno
+        return None
 
-    def solicitar_entrada(self):
-        pass
+    def solicitar_entrada(self, curso, universidade):
+        if isinstance(curso, Curso) and isinstance(universidade, Universidade):
+            if self.ponto_enem >= curso.nota_corte_curso:
+                universidade.matricular_aluno(self, curso)
+                print(f'O aluno {self.nome_aluno} foi matriculado no curso {curso.nome_curso} da universidade {universidade.nome_universidade}.')
+            else:
+                print(f'O aluno {self.nome_aluno} não atende à nota de corte do curso {curso.nome_curso}.')
+        else:
+            print('Curso ou universidade inválidos.')
+
     
     def __str__(self):
-        cab = f'curso: {self.__nome_curso}'
-        
-        return f'{self.__nota_corte_curso}'
+                
+        return f'curso: {self.__nome_curso}, nota de corte: {self.__nota_corte_curso}'
 
         #for i in self.alunos:
             
@@ -140,20 +153,33 @@ class Aluno:
 
     def solicita_entrada(self,curso,universidade):
         if type(curso) == Curso and type(universidade) == Universidade:
-            if self.ponto_enem:
-                pass
+            if self.ponto_enem >= curso.nota_corte_curso:
+                return True
+        else:
+            return False               
 
     def efetivar_matricula(self,curso,universidade):
-        #universidade.matricula_aluno(self,curso)
-        if self.solicita_entrada(curso,universidade):
-            pass
+        if universidade.matricular_aluno(self,curso):
+            if self.solicita_entrada(curso,universidade):
+                return True
+        return False   
 
-    def solita_transferencia(self,universidade_origem,curso_origem,univ_destino):
-        pass
+    def solita_transferencia(self,universidade_origem,curso_origem,universidade_destino):
+        if isinstance(universidade_origem, Universidade) and isinstance(universidade_destino, Universidade) and isinstance(curso_origem, Curso):
+            if self in curso_origem.alunos and universidade_origem in Sisu.__universidades:
+                curso_origem.alunos.remove(self)
+                universidade_destino.matricular_aluno(self, curso_origem.nome_curso)
+                print(f"Transferência solicitada para o curso {curso_origem.nome_curso} na universidade {universidade_destino.nome_universidade}.")
+            else:
+                print("Aluno não matriculado na universidade ou curso de origem.")
+        else:
+            print("Entradas inválidas para solicitar transferência.")
 
     def __str__(self):
         if self.ponto_enem > 0:
-            return f'{self.nome_aluno} cadastrado'
+            return f'{self.nome_aluno} cadastrado(a) com sucesso.'
+        else:
+            return f'{self.nome_aluno} com nota insuficiente para concorrer a uma vaga.'
 
 def main():
     print(200*'_')  
@@ -194,7 +220,7 @@ def main():
     
     #CADASTRANDO ALUNOS
     maria = Aluno ("11111111111111","Maria","01/02/1990",800)
-    jose = Aluno ("22222222222","José","15/12/1998",400)
+    jose = Aluno ("22222222222","José","15/12/1998",0)
     uespi.matricular_aluno(maria,'pedagogia')
     print(maria)
     print(jose)
