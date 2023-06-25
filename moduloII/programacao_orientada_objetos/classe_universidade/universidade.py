@@ -60,7 +60,7 @@ class Universidade:
         if curso is not None:
             if aluno.ponto_enem >= curso.nota_corte_curso:
                 curso.alunos.append(aluno)
-                aluno.matricula_publica = True  # Exemplo de atributo para indicar que o aluno foi matriculado
+                aluno.matricula_publica = True
                 print(f'O aluno {aluno.nome_aluno} foi matriculado no curso {nome_curso}.')
             else:
                 print(f'O aluno {aluno.nome_aluno} não atende à nota de corte do curso {nome_curso}.')
@@ -154,7 +154,12 @@ class Aluno:
     def solicita_entrada(self,curso,universidade):
         if type(curso) == Curso and type(universidade) == Universidade:
             if self.ponto_enem >= curso.nota_corte_curso:
-                return True
+                if self.matricula_publica.tipo_universidade == 'publico':
+                    self.matricula_publica = True
+                    return self.matricula_publica
+                elif self.matricula_privada.tipo_universidade == 'privado':
+                    self.matricula_privada = True
+                    return self.matricula_privada
         else:
             return False               
 
@@ -219,7 +224,7 @@ def main():
     Sisu.inclui_universidade(novafapi)
     
     #CADASTRANDO ALUNOS
-    maria = Aluno ("11111111111111","Maria","01/02/1990",800)
+    maria = Aluno ("11111111111111","Maria","01/02/1990",850)
     jose = Aluno ("22222222222","José","15/12/1998",0)
     uespi.matricular_aluno(maria,'pedagogia')
     print(maria)
