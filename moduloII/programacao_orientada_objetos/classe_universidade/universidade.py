@@ -43,7 +43,7 @@ class Universidade:
     def cadastrar_curso(self,curso):
         if type(curso) == Curso:
             self.__cursos.append(curso)
-            print(f'curso cadastrado com sucesso!')
+            
         else:
             print("Erro!")
     
@@ -112,7 +112,7 @@ class Curso:
             self.alunos.append(aluno)
             print(f'O aluno {aluno.nome_aluno} foi cadastrado no curso {self.nome_curso}.')
         else:
-            print('Erro: O objeto fornecido não é uma instância da classe Aluno.')
+            print('Aluno não encontrado!')
     
     def buscar_aluno(self, cpf):
         for aluno in self.alunos:
@@ -132,10 +132,8 @@ class Curso:
 
     
     def __str__(self):
-                
+        
         return f'curso: {self.__nome_curso}, nota de corte: {self.__nota_corte_curso}'
-
-        #for i in self.alunos:
             
 
 class Aluno:
@@ -187,8 +185,7 @@ class Aluno:
             return f'{self.nome_aluno} com nota insuficiente para concorrer a uma vaga.'
 
 def main():
-    print(200*'_')  
-
+    print(200*'_')
     #CADASTRANDO UNIVERSIDADES
     uespi = Universidade('UESPI','Universidade Estadual do Piauí','publico')
     ufpi = Universidade('UFPI','Universidade Federal do Piauí','publico')
@@ -196,7 +193,14 @@ def main():
     print(uespi)
     print(ufpi)
     print(novafapi)
-    print(200*'_')
+
+    Sisu.inclui_universidade(uespi)
+    Sisu.inclui_universidade(ufpi)
+    Sisu.inclui_universidade(novafapi)
+
+    print(200*'_')  
+
+
 
     #CADASTRANDO CURSOS
     enfermagem = Curso(111,'enfermagem',3,40,700)
@@ -219,9 +223,6 @@ def main():
     novafapi.cadastrar_curso(medicina)
 
     print(200*'_')
-    Sisu.inclui_universidade(uespi)
-    Sisu.inclui_universidade(ufpi)
-    Sisu.inclui_universidade(novafapi)
     
     #CADASTRANDO ALUNOS
     maria = Aluno ("11111111111111","Maria","01/02/1990",850)
