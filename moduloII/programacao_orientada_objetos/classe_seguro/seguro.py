@@ -42,7 +42,7 @@ class SeguroVida(Seguro):
             self.valor_premio = 20000 
 
     def __str__(self):
-        return f'Valor seguro: R${self._valor_seguro:.2f}\nValor prêmio: R${self._valor_premio:.2f}\nBeneficiario {self._nome_beneficiario}'
+        return super().__str__()+f'\nValor seguro: R${self._valor_seguro:.2f}\nValor prêmio: R${self._valor_premio:.2f}\nBeneficiario {self._nome_beneficiario}'
 
 
 class SeguroAutomovel(Seguro):
@@ -114,6 +114,12 @@ def main():
     seguro1.calcular_premio_automovel()
     
     controle_seguros.adicionar_seguro(seguro1)
+    print(controle_seguros)
+
+    seguro2 = SeguroVida("V11","Carla",50.00,25.00,80,"Ana")
+    seguro2.calcular_valor_vida()
+    seguro2.calcular_premio_vida()
+    controle_seguros.adicionar_seguro(seguro2)
     print(controle_seguros)
 
 if __name__=='__main__':
