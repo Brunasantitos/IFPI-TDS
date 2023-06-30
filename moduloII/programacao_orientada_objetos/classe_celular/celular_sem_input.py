@@ -129,14 +129,11 @@ class Celular:
         else:
             print("Wifi desligado, não é possível assistir")
                       
-    def carregar_celular(self):
+    def carregar_celular(self,valor):
          if self.__bateria < 100 :
-            x = Bateria()
-            valor_carregar = x.carregar()
-            print('bateria carregada')
-
-             
-        
+            self.__bateria.carregar(valor)
+            
+            
 
     def descarregar_celular(self,valor):
         pass  
@@ -168,7 +165,8 @@ def main():
     celular1.ligarDesligar()
     celular1.ligar_desligar_wifi('ligar')
     celular1.assistir_video_tempo(10)
-    celular1.carregar()
+    celular1.carregar_celular(100)
+    print(celular1)
     '''
     print(celular1)
     print(100*"_")
