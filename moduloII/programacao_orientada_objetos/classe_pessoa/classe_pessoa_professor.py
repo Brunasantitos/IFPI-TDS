@@ -125,7 +125,7 @@ def main():
         else:
             print("Pessoa não encontrada!")
     elif opcao==9:
-        break;
+        break
 
 if __name__ == '__main__':
     main()

@@ -1,17 +1,19 @@
+from  random import randint
 class Bateria:
-    def __init__(self, percentual):
+    def __init__(self):
         self.__codigo = "A37"
         self.capacidade = 100
-        self.__percentual_carga = percentual
+        self.__percentual_carga = randint(1,100)
     
     @property
     def codigo(self):
         return self.__codigo
 
-    @property
+   
+    @property 
     def percentual_carga(self):
-        return self.__percentual_carga
-    
+      return self.__percentual_carga
+
     def carregar(self,valor):
 
         if valor >= 0:
@@ -40,14 +42,18 @@ class Bateria:
             raise "error"
         
     
-    def __str__(self):
-        return f'{self.__percentual_carga}'
+    def _str_(self):
+        return f'{self.percentual_carga}'
     
          
 class Celular:
     def __init__(self, bateria):
         self.__mei = 14536789
-        self.__bateria = bateria
+        
+        if type(bateria)==Bateria:
+           self.__bateria = bateria
+        else:
+           self.__bateria = None
         self.__wifi = 'desligar'
         self.__ligar = False       
     
@@ -59,9 +65,7 @@ class Celular:
     def wifi(self):
         return self.__wifi
     
-    @property
-    def bateria(self):
-        return self.__bateria
+    
     
     @property
     def ligar(self):
@@ -129,11 +133,13 @@ class Celular:
         else:
             print("Wifi desligado, não é possível assistir")
                       
-    def carregar_celular(self,valor):
-         if self.__bateria < 100 :
-            self.__bateria.carregar(valor)
-            
-            
+    def carregar_celular(self):
+         
+         if self.__bateria.percentual_carga < 100:
+            print(f'bateria com {self.__bateria.percentual_carga}%')
+            self.__bateria.carregar(100)
+            print(f'carga {self.__bateria.percentual_carga}% completa!')
+    
 
     def descarregar_celular(self,valor):
         pass  
@@ -148,10 +154,10 @@ class Celular:
             if self.__bateria == None:
                 return "\ncelular sem bateria"
             
-        return f'\ncelular ligado, bateria em {self.__bateria}%'   
+        return f'\ncelular ligado, bateria em {self.__bateria.percentual_carga}%'   
 
 def main():
-    b1 = Bateria(100)
+    b1 = Bateria()
     #b2 = Bateria(55)
 
     celular1 = Celular(b1)
@@ -163,9 +169,9 @@ def main():
 
     print("CELULAR 1")
     celular1.ligarDesligar()
-    celular1.ligar_desligar_wifi('ligar')
-    celular1.assistir_video_tempo(10)
-    celular1.carregar_celular(100)
+    #celular1.ligar_desligar_wifi('ligar')
+    #celular1.assistir_video_tempo(10)
+    celular1.carregar_celular()
     print(celular1)
     '''
     print(celular1)

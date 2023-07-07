@@ -1,9 +1,9 @@
 class Paciente:
   def __init__(self,id_pac,nome_pac,dt_nasc,contato):
-     self.__id_paciente = id_pac
-     self.nome = nome_pac 
-     self.__dt_nasc = dt_nasc
-     self.__contato = contato
+    self.__id_paciente = id_pac
+    self.nome = nome_pac 
+    self.__dt_nasc = dt_nasc
+    self.__contato = contato
 
   @property
   def id_paciente(self):
@@ -44,7 +44,7 @@ class ConsultaMedica:
     ConsultaMedica.id+=1
     self.__id = ConsultaMedica.id
     if type(medico)==Medico:
-       self.__medico = medico
+      self.__medico = medico
     else:
       raise "Error!"
     if type(paciente)==Paciente:
@@ -101,14 +101,14 @@ def menu():
 def consultaObjeto(nome,lista):
   for i in lista:
     if nome==i.nome:
-       return i  # objeto
+      return i  # objeto
   return None
 
 def buscaConsulta(nome_pac,data,lista):
-     for i in lista:
-         if nome_pac == i.consultas and data==i.data:
-            return i
-     return None
+    for i in lista:
+        if nome_pac == i.consultas and data==i.data:
+          return i
+    return None
 
 while True:
   menu()
@@ -121,7 +121,7 @@ while True:
         pacientes.append(Paciente(int(input("Informe o id paciente: ")),input("Nome do paciente: "),input("Data nascimento DD/MM/AAAA: "),int(input("Contato: "))))
         print("Cadastro realizado!")
       else:
-         print(pac)
+        print(pac)
   elif op==2:
       nome = input("Nome do Medico:")
       pac = consultaObjeto(nome,pacientes)
@@ -130,36 +130,36 @@ while True:
         medicos.append(Medico(int(input("Informe o id_medico: ")),int(input("Informe o crm: ")),input("Informe o nome do médico: "),input("Especialidade: ")))
         print("Cadastro realizado!")
       else:
-         print(pac)
+        print(pac)
       
   elif op==3:
      # dar os inputs para os atributos
      # pegar o nome do paciente
      # buscar na lista de pacientes o objeto correspondente
-     nome = input("Nome do paciente:")
-     pac = consultaObjeto(nome,pacientes)
-     if pac==None:
-       nome_medico = input("Informe o nome do médico: ")
-       med = consultaObjeto(nome_medico,medicos)
-       if med != None:
-         nome_paciente = input("Informe o nome do paciente: ")
-         if nome_paciente != None:
-           pac = (consultaObjeto(nome_paciente,pacientes))
-           if pac != None:
-             data = input("Informe a data da consulta: ")
+    nome = input("Nome do paciente:")
+    pac = consultaObjeto(nome,pacientes)
+    if pac==None:
+      nome_medico = input("Informe o nome do médico: ")
+      med = consultaObjeto(nome_medico,medicos)
+      if med != None:
+        nome_paciente = input("Informe o nome do paciente: ")
+        if nome_paciente != None:
+          pac = (consultaObjeto(nome_paciente,pacientes))
+          if pac != None:
+            data = input("Informe a data da consulta: ")
 
-             consultas.append(ConsultaMedica(med,pac,data))
-             print("Consulta agendada com sucesso!")
-         else:
+            consultas.append(ConsultaMedica(med,pac,data))
+            print("Consulta agendada com sucesso!")
+        else:
             print("Paciente não encontrado!")
-       else:
-         print("Médico não encontrado!")
+      else:
+        print("Médico não encontrado!")
         
         #consultas.append(ConsultaMedica (Paciente(int(input("Informe o id paciente: ")),nome,input("Data nascimento DD/MM/AAAA: "),
                                                      #int(input("Contato: "))),Medico(int(input("Informe o id_medico: ")),int(input("Informe o crm: ")),
                                                         #input("Informe o nome do médico: "),input("Especialidade: ")),input("Data da consulta DD/MM/AAAA: ")))
-     else:
-        print("Consulta não agendada!")
+    else:
+      print("Consulta não agendada!")
      # input do médico
      # input da data   
      # criar a instancia de consulta e adicionar na lista
@@ -171,23 +171,23 @@ while True:
      #criar o objeto ConsultaMedica
      # inserir na lista de consultas médicas
   elif op==4:
-     nome_pac = input("Entre com o nome do paciente:")
-     data = input("Entre com a data:")
-     c = buscaConsulta(nome_pac,data,consultas)
-     if c!=None:
-       if c.pago == False:
-          c.pagar_consulta()
-       else:
-          print("A consulta já está paga!")
-     else:
+    nome_pac = input("Entre com o nome do paciente:")
+    data = input("Entre com a data:")
+    c = buscaConsulta(nome_pac,data,consultas)
+    if c!=None:
+      if c.pago == False:
+        c.pagar_consulta()
+      else:
+        print("A consulta já está paga!")
+    else:
       print("Consulta não encontrada!")
       nome_pac = input("Entre com o nome do paciente:")
       data = input("Entre com a data:")
       c = buscaConsulta(nome_pac,data,consultas)
       if c!=None:
-       if c.pago == False:
+        if c.pago == False:
           c.pagar_consulta()
-       else:
+        else:
           print("A consulta já está paga!")
       else:
         print("Consulta não encontrada!")
@@ -208,9 +208,9 @@ while True:
       data = input("Entre com a data:")
       c = buscaConsulta(nome_pac,data,consultas)
       if c!=None:
-       if c.pago == False:
+        if c.pago == False:
           c.pagar_consulta()
-       else:
+        else:
           print("A consulta já está paga!")
       else:
         print("Consulta não encontrada!")

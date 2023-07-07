@@ -114,7 +114,7 @@ def main():
     seguro1.calcular_premio_automovel()
     
     controle_seguros.adicionar_seguro(seguro1)
-    print(controle_seguros)
+    #print(controle_seguros)
 
     seguro2 = SeguroVida("V11","Carla",50.00,25.00,80,"Ana")
     seguro2.calcular_valor_vida()

@@ -18,8 +18,9 @@ class ConsultaMedica:
     dataAtual = datetime.strptime(data_consulta,"%d/%m/%Y").date()
 
     if dataAtual <= date.today() or dataAtual.weekday() in finalDeSemana:
-        raise ValueError("data de consulta menor que data atual ou caiu em final de semana")
-        print(f'Valor: {dataAtual}')
+      print(f'Valor: {dataAtual}')
+      raise ValueError("data de consulta menor que data atual ou caiu em final de semana")
+        
 
     else:
         self.data_consulta = datetime.strptime(data_consulta,"%d/%m/%Y").date()
