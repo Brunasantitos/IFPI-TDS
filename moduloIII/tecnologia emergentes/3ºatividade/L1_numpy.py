@@ -24,6 +24,11 @@ print(idades.mean())
 
 #QUESTÃO 4:
 
-#dados = np.array([1,1,1,1,1,1,1,4,5,6,8])
+dados = np.array([1,1,1,1,1,1,1,4,5,6,8])
+y=(np.bincount(dados))
+maximo = max(y)
 
-#print(dados.unique())
+for i in range(len(y)):
+    if y[i] == maximo:
+        print(i, end = " ")
+  
