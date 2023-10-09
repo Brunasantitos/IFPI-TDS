@@ -22,6 +22,7 @@ class Terrorismo:
     
 
 def main():
+    
     arquivo = np.genfromtxt('terrorismo.csv', delimiter=',', skip_header=1, missing_values='')
     Cidade = Terrorismo(arquivo)
     Cidade.maiorPorcentagem()
