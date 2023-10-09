@@ -1,4 +1,3 @@
-import csv 
 import numpy as np
 
 class Terrorismo:
@@ -20,9 +19,11 @@ class Terrorismo:
         cidade_maior_mortos = cidades[np.argmax(mortos)]
         print(f'Maior número de mortos: {maior_numero_mortos}, na cidade: {cidade_maior_mortos}')
     
+    def __str__(self):
+        return "Classe Terrorismo"
 
 def main():
-    arquivo = np.genfromtxt('terrorismo.csv', delimiter=',', skip_header=1, missing_values='')
+    arquivo = np.genfromtxt('terrorismo.csv', delimiter=',', skip_header=1)
     Cidade = Terrorismo(arquivo)
     Cidade.maiorPorcentagem()
     Cidade.numeroMortos()
