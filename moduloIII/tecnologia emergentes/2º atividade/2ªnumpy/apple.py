@@ -36,7 +36,7 @@ class Fruta:
 def main():
     with open('apples_ts.csv',"r") as arquivo_csv:
         arquivo = csv.reader(arquivo_csv)
-        arquivo = np.loadtxt('apples_ts.csv', delimiter=',')#loadtxt
+        arquivo = np.loadtxt('apples_ts.csv', delimiter=',',dtype=str)#loadtxt
         VendasMaca = Fruta(arquivo)
         VendasMaca.Moscow()
         VendasMaca.Kellningrad()
