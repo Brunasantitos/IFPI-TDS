@@ -3,39 +3,48 @@ import numpy as np
 
 class Fruta:
 
-    def __init__(self, arquivo):
+    def __init__(self,arquivo):
         self.arquivo = arquivo
 
     def Moscow(self):
-        print(self.arquivo[0])
+        
+        for i,linha in enumerate(self.arquivo):
+            if i == 0:
+                print(f'A cidade de Moscow, vendeu essas quantidades de maças de acordo com os anos {linha}')
 
     def Kellningrad(self):
-        print(self.arquivo[1])
+        for i,linha in enumerate(self.arquivo):
+            if i == 1:
+                print(f'A cidade de Kellningrad, vendeu essas quantidades de maças de acordo com os anos {linha}')
 
     def Petersburg(self):
-        print(self.arquivo[2])
+        for i,linha in enumerate(self.arquivo):
+            if i == 2:
+                print(f'A cidade de Petersburg, vendeu essas quantidades de maças de acordo com os anos {linha}')
 
     def Krasnodar(self):
-        print(self.arquivo[3])
+        for i,linha in enumerate(self.arquivo):
+            if i == 3:
+                print(f'A cidade de Krasnodar, vendeu essas quantidades de maças de acordo com os anos {linha}')
 
     def Ekaterinburg(self):
-        print(self.arquivo[4])
+        for i,linha in enumerate(self.arquivo):
+            if i == 4:
+                print(f'A cidade de Ekaterinburg, vendeu essas quantidades de maças de acordo com os anos {linha}')
+
 
 def main():
-    with open('apples_ts.csv', "r") as arquivo_csv:
-        csv_reader = csv.reader(arquivo_csv)
-        # Converte os dados do CSV em uma lista de listas
-        lista_de_listas = [linha for linha in csv_reader]
-
-        # Converte a lista de listas em um array NumPy e substitui valores vazios por 0
-        arquivo = np.array([[float(valor) if valor else 0 for valor in linha] for linha in lista_de_listas])
-
+    with open('apples_ts.csv',"r") as arquivo_csv:
+        arquivo = csv.reader(arquivo_csv)
+        arquivo = np.loadtxt('apples_ts.csv', delimiter=',',dtype=str)#loadtxt
         VendasMaca = Fruta(arquivo)
         VendasMaca.Moscow()
         VendasMaca.Kellningrad()
         VendasMaca.Petersburg()
         VendasMaca.Krasnodar()
         VendasMaca.Ekaterinburg()
-
-if __name__ == '__main__':
+        
+        
+      
+if __name__=='__main__':
     main()

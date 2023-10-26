@@ -1,6 +1,6 @@
 import csv
 import numpy as np
-
+#isnan usado para retirar o NaN dos dados
 class Fruta:
 
     def __init__(self,arquivo):

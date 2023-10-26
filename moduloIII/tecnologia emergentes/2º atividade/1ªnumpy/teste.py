@@ -1,32 +1,22 @@
-import numpy as np
+import csv
 
 class Terrorismo:
-    
-    def __init__(self, arquivo):
+    def __init__(self,arquivo):
         self.arquivo = arquivo
 
-    def maiorPorcentagem(self):
-        cidades = self.arquivo[:, 0]
-        ataques = self.arquivo[:, 1].astype(int)
-        maior_ataque = np.max(ataques)
-        cidade_maior_ataque = cidades[np.argmax(ataques)]
-        print(f'Maior número de incidentes: {maior_ataque}, na cidade: {cidade_maior_ataque}')
-    
-    def numeroMortos(self):
-        cidades = self.arquivo[:, 0]
-        mortos = self.arquivo[:, 3].astype(int)
-        maior_numero_mortos = np.max(mortos)
-        cidade_maior_mortos = cidades[np.argmax(mortos)]
-        print(f'Maior número de mortos: {maior_numero_mortos}, na cidade: {cidade_maior_mortos}')
-    
-    def __str__(self):
-        return "Classe Terrorismo"
+    def maisIncidentes(self):
+        for linha in self.arquivo:
+            
+            print(linha[1])
 
 def main():
-    arquivo = np.genfromtxt('terrorismo.csv', delimiter=',', skip_header=1)
-    Cidade = Terrorismo(arquivo)
-    Cidade.maiorPorcentagem()
-    Cidade.numeroMortos()
+    with open('terrorismo.csv', 'r', newline='') as csvfile:
+        arquivo = csv.reader(csvfile, delimiter=',')
+        next(arquivo)
+
+        Cidade = Terrorismo(arquivo)
+        Cidade.maisIncidentes()
 
 if __name__=='__main__':
     main()
+    
