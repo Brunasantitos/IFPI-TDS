@@ -7,7 +7,7 @@ print(arquivo.tail()) #últimas linhas
 print(arquivo.info)
 print(arquivo.describe())
 print(arquivo.loc[[1]]) #colunas
-print(arquivo.loc[0:3]) #linhas
+print(arquivo.loc[0:3]) #linhas questão 8
 
 
 
